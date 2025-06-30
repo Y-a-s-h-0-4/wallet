@@ -26,6 +26,10 @@ export async function POST(request: NextRequest) {
     const user = await getOrCreateUser(clerkUser)
     console.log("DB user:", user);
 
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     return NextResponse.json({ 
       success: true, 
       user: {
