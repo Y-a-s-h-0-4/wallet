@@ -11,6 +11,7 @@ import {
 } from "@clerk/nextjs";
 import { SyncUserOnSignIn } from "@/components/SyncUserOnSignIn";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -65,6 +66,7 @@ export default function RootLayout({
             </header>
             {children}
           </div>
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
