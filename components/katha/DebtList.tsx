@@ -10,7 +10,7 @@ interface Debt {
   type: 'LENT' | 'BORROWED';
   person: string;
   amount: number;
-  description: string;
+  description?: string;
   date: string;
   dueDate?: string;
   status: 'PENDING' | 'SETTLED';
