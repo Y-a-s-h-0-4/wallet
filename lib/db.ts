@@ -78,7 +78,8 @@ export async function createUserFromClerk(clerkUser: any) {
     }
   })
   await ensureDefaultCategories(user.id)
-  return user
+  // Fetch the user again with relations
+  return await getUserByClerkId(clerkUser.id)
 }
 
 export async function getOrCreateUser(clerkUser: any) {
