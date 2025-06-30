@@ -64,7 +64,7 @@ export function DebtList({ debts, onSettle, onDelete }: DebtListProps) {
           <Card 
             key={debt.id} 
             className={`shadow-sm hover:shadow-md transition-all ${
-              debt.status === 'settled' ? 'opacity-60' : ''
+              debt.status === 'SETTLED' ? 'opacity-60' : ''
             } ${
               isOverdue ? 'border-l-4 border-l-red-500 bg-red-50' : 
               isDueSoon ? 'border-l-4 border-l-orange-400 bg-orange-50' : ''
@@ -104,7 +104,7 @@ export function DebtList({ debts, onSettle, onDelete }: DebtListProps) {
                     {/* Date and Due Date */}
                     <div className="flex items-center space-x-3 text-xs text-gray-500">
                       <span>{format(new Date(debt.date), 'MMM dd, yyyy')}</span>
-                      {debt.dueDate && debt.status === 'pending' && (
+                      {debt.dueDate && debt.status === 'PENDING' && (
                         <div className={`flex items-center space-x-1 ${
                           isOverdue ? 'text-red-600' : isDueSoon ? 'text-orange-600' : 'text-gray-500'
                         }`}>
