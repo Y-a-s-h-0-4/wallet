@@ -1,5 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 
+type Saving = {
+  amount: string;
+  [key: string]: any;
+};
+
 export function useSavings() {
   const [savings, setSavings] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -13,7 +18,7 @@ export function useSavings() {
       if (!res.ok) throw new Error('Failed to fetch savings');
       const data = await res.json();
       const total = Array.isArray(data.savings)
-        ? data.savings.reduce((sum: number, s) => sum + parseFloat(s.amount || 0), 0)
+        ? data.savings.reduce((sum: number, s: Saving) => sum + parseFloat(s.amount || 0), 0)
         : 0;
       setSavings(total);
     } catch (err: any) {
