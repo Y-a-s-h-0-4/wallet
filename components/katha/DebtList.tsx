@@ -14,7 +14,7 @@ interface Debt {
   date: string;
   dueDate?: string;
   status: 'PENDING' | 'SETTLED';
-  category: string;
+  category?: string;
 }
 
 interface DebtListProps {
@@ -75,7 +75,7 @@ export function DebtList({ debts, onSettle, onDelete }: DebtListProps) {
                 <div className="flex items-start space-x-3 flex-1">
                   {/* Category Icon */}
                   <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lg">
-                    {getCategoryIcon(debt.category)}
+                    {getCategoryIcon(debt.category || '')}
                   </div>
                   
                   <div className="flex-1 min-w-0">
