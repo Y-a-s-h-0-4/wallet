@@ -49,7 +49,7 @@ export function DebtList({ debts, onSettle, onDelete }: DebtListProps) {
   // Sort debts: pending first, then by date (newest first)
   const sortedDebts = [...debts].sort((a, b) => {
     if (a.status !== b.status) {
-      return a.status === 'pending' ? -1 : 1;
+      return a.status === 'PENDING' ? -1 : 1;
     }
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
@@ -57,8 +57,8 @@ export function DebtList({ debts, onSettle, onDelete }: DebtListProps) {
   return (
     <div className="space-y-3">
       {sortedDebts.map((debt) => {
-        const isOverdue = debt.dueDate && debt.status === 'pending' && getDaysUntilDue(debt.dueDate) < 0;
-        const isDueSoon = debt.dueDate && debt.status === 'pending' && getDaysUntilDue(debt.dueDate) <= 3 && getDaysUntilDue(debt.dueDate) >= 0;
+        const isOverdue = debt.dueDate && debt.status === 'PENDING' && getDaysUntilDue(debt.dueDate) < 0;
+        const isDueSoon = debt.dueDate && debt.status === 'PENDING' && getDaysUntilDue(debt.dueDate) <= 3 && getDaysUntilDue(debt.dueDate) >= 0;
         
         return (
           <Card 
